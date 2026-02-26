@@ -21,18 +21,18 @@ class DeviceAgent(Agent):
       self.state = "S"
 
       self.trust_score = trust_score      #0-1
-      self.defence_level = defence.level  #0-1
+      self.defence_level = defence_level  #0-1
 
       #timestamps 
       self.exposed_step = None
       self.infected_step = None
 
       #STEP 1, RECEIVES UPDATE
-      def receive_update(self):
-         """
-         Device checks the update server.
-         If compromised, device may download a malicious update
-         """
+   def receive_update(self):
+      """
+      Device checks the update server.
+      If compromised, device may download a malicious update
+      """
          
       server = self.model.update_server  
 
@@ -42,7 +42,7 @@ class DeviceAgent(Agent):
             self.exposed_step = self.model.current_step
 
         #Step 2, execute malware
-      def execute_malware(self):
+   def execute_malware(self):
           """
           Exposed devices may execute the malware
           """
@@ -54,7 +54,7 @@ class DeviceAgent(Agent):
               self.infected_step = self.model.current_step
               
         #step 3- detect and recover
-      def detect_and_recover(self):
+   def detect_and_recover(self):
           """
           Infected devices may detect and remove malware.
           Detection probability:
@@ -69,7 +69,7 @@ class DeviceAgent(Agent):
                if random.random() < detection_probability:
                    self.state = "R"
                    
-      def step(self):
+   def step(self):
         """
         Device behaviour per update cycle.
         """

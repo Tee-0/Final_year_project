@@ -39,14 +39,14 @@ class UpdateServerAgent(Agent):
         # Time step when compromise occurred (for reporting)
         self.compromise_step = None
 
-        def compromise(self, current_step: int):
+    def compromise(self, current_step: int):
             """
             Marks the update server as compromised.
             """
-        self.is_compromised = True
-        self.compromise_step = current_step  
+            self.is_compromised = True
+            self.compromise_step = current_step  
 
-        def step(self):
+    def step(self):
 
             """
         Update server behaviour per simulation step.

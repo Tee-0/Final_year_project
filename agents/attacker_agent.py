@@ -38,11 +38,9 @@ class AttackerAgent(Agent) :
         - attacker skill
         - server security
         """
-        
         #if already compromisedd, no need to try again
         if update_server.is_compromised:
             return
-        
         #probability model(simple and explainable)
         probability_of_success = (
             self.skill_level * (1 - update_server.security_level)
@@ -53,7 +51,7 @@ class AttackerAgent(Agent) :
             update_server.compromise(self.model.current_step)
             self.attack_successful = True
 
-        def step(self):
+    def step(self):
             """
             Attacker behaviour per simulation step
             """
